@@ -1,0 +1,37 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.6.12'
+	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+}
+
+group = 'com.hm.auth.service'
+version = '1.0'
+sourceCompatibility = '11'
+
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.postgresql:postgresql:42.7.2'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.1.2.RELEASE'
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+	compileOnly 'org.projectlombok:lombok'
+	implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.3'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.security:spring-security-test'
+
+}
+
+/*tasks.named('test') {
+	useJUnitPlatform()
+}*/

@@ -1,0 +1,48 @@
+server:
+  port: 5121
+
+spring:
+  datasource:
+    password: bcb@1234
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/user-db
+  jpa:
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false
+      #  security:
+      #    crypto:
+      #      password:
+      #        encoder: BCryptPasswordEncoder
+
+#https://cryptotools.net/rsagen -- To genarate Key pair
+
+app:
+  jwt:
+    public-key: |
+      -----BEGIN PUBLIC KEY-----
+      MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCX4OJyOwl4NVOdT0icwTn2vo4C
+      dC1fgHFYRmUScXSEvHyvCARCOIPEuGZe85XdU4HuglY7B3OfaYUkohrFSzlZHRib
+      xwXjI45Sp9cznpwT3ijFC5007DANJkEJdjARnYmbWili+LgZDb56a+bKDzZIiXE/
+      79XRvfMThtgopz2oKwIDAQAB
+      -----END PUBLIC KEY-----
+    private-key: |
+      -----BEGIN RSA PRIVATE KEY-----
+      MIICWwIBAAKBgQCX4OJyOwl4NVOdT0icwTn2vo4CdC1fgHFYRmUScXSEvHyvCARC
+      OIPEuGZe85XdU4HuglY7B3OfaYUkohrFSzlZHRibxwXjI45Sp9cznpwT3ijFC500
+      7DANJkEJdjARnYmbWili+LgZDb56a+bKDzZIiXE/79XRvfMThtgopz2oKwIDAQAB
+      AoGAId/FgcbLGOWD7a0WO+gY3oCnucJhsFA8d3zT5CYr38MOaBd4o7BpK0IZiwn3
+      HfMXIrQtOWMzFZX6XS5OnDxn4LBfF2asue9isesbOlTBYLCkHi1paf/bn55XqEXJ
+      CzqVlJDsj90BexMHhjKpniffTYyPco7Lp5WdvUU/gx+CNGECQQDkyL1/Kkq8XRFo
+      d4Nko6C6mqmpO+/lYHhoNGPeOLjmVkEfaLmRWZy/pnWs4u3GVePtq9sHh+didg8W
+      FKaCbc5bAkEAqfIaZHAsE/Sd2MZqv9EErb4mkP3RmwUK37lFJ5MCafNIveleHopb
+      Ot7iZfFeeV1G4848kZtoWOh7/YJDRMlWcQJAB/A3Mwxin3qTOg67jmhnEVKAhJDB
+      2DGqu+LlfDZ3o/ZmOBLILZTwbW33M1KEcZdVW0/VP8OlcbMq/tckl+37dQJAWSQs
+      w9IyzKTaxwIMrGCu25OKFzOL5oxWj9NWetOZyIlb9oGaZNqdz9tpVZ+ttms+6+8Z
+      xiaGLVyE7QyOzF3vgQJAK8xR63NY7c6P02aRDiSw0vtLWp0jAngroutGqOWKUxa/
+      058ChGMFl4kPh4M2uWTU0K6KwaaOjG612zh07RnU/g==
+      -----END RSA PRIVATE KEY-----
