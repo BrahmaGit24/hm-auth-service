@@ -27,7 +27,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	private PasswordEncoder passwordEncoder;
 
 	@Autowired
-	private CustomUserDetailsService customUserDetailsService;
+	private CustomUserDetailsService customUserService;
 
 //	public WebSecurityConfiguration(final DataSource dataSource) {
 //		this.dataSource = dataSource;
@@ -35,7 +35,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
+		auth.userDetailsService(customUserService).passwordEncoder(passwordEncoder());
 	}
 
 	@Bean

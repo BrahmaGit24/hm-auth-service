@@ -1,6 +1,7 @@
 package com.hm.auth.service.service.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,20 +23,23 @@ public class CustomUserDetailsService implements UserDetailsService{
 	UserDAO userDao;
 	
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String emailId) throws UsernameNotFoundException {
 		
-		UserModel model = userDao.findByEmailId(username);
+		UserModel model = userDao.findByEmailId(emailId);
+		String userEmailId = model.getEmailId();
 		UserDTO dto = new UserDTO();
-		dto.setUserName(username);
-		dto.setPassword(username);
-		
+		if(userEmailId == null){
+			throw new UsernameNotFoundException("User not authorized.");
+		} else {
+			dto.setUserName(model.getEmailId());
+			dto.setPassword(model.getPasswordSalt());
+		}
 		List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
 		GrantedAuthority authority = new SimpleGrantedAuthority(model.getUserRole().getRole().getRoleName());
 		grantedAuthorities.add(authority);
-		
 		dto.setAuthorittyList(grantedAuthorities);
 		com.hm.auth.service.util.UserDetails userDetails = new com.hm.auth.service.util.UserDetails(dto);
-		
+
 		return userDetails;
 	}
 
